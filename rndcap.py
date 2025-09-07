@@ -245,8 +245,11 @@ class RandomnessLogger:
                             self.pending_data.append(data)
                             self.last_cycle = data[1]  # cycle number
                             
-                            # Batch commit when needed
-                            self.batch_commit()
+                            # Batch commit when needed, if not dry-run
+                            if not self.args.dry_run:
+                                self.batch_commit()
+                            else:
+                                print(f"Dry run - parsed data: {data}")
                     
                     current_time = time.time()
                     
@@ -323,6 +326,9 @@ def main():
     parser.add_argument('--log-level', default='INFO',
                        choices=['DEBUG', 'INFO', 'WARNING', 'ERROR'],
                        help='Log level (default: INFO)')
+    # add a dry-run option
+    parser.add_argument('--dry-run', action='store_true',
+                       help='Run without writing to database (for testing)')
     
     # Connection retry
     parser.add_argument('--retry-attempts', type=int, default=10,
