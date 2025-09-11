@@ -1,0 +1,81 @@
+Hardware Randomness Analysis - Enhanced Version
+==================================================
+Database: randomness_sample.db
+Table: randomness_data
+Max rows: unlimited
+Column mapping: auto-detect
+Dry run: False
+Output prefix: sample_analysis
+Analyzing database schema: randomness_sample.db
+Table: randomness_data
+Available columns: ['id', 'timestamp', 'ch0_value', 'ch1_value', 'ch2_value', 'ch3_value', 'combined_word']
+Total rows: 100,000
+Column mapping: {'timestamp': 'timestamp', 'ch0': 'ch0_value', 'ch1': 'ch1_value', 'ch2': 'ch2_value', 'ch3': 'ch3_value', 'combined_word': 'combined_word'}
+
+Loading data from randomness_sample.db...
+Query: 
+        SELECT timestamp, ch0_value, ch1_value, ch2_value, ch3_value, combined_word
+        FROM randomness_data 
+        ORDER BY id
+        
+Loaded 100000 records
+Data spans from 2025-09-09 22:34:36.708185 to 2025-09-10 00:22:43.548869
+
+============================================================
+BASIC STATISTICS
+============================================================
+Combined Word Analysis:
+  Records: 100,000
+  Range: 19,430 to 4,294,910,259
+  Theoretical Max: 4,294,967,295
+  Mean: 2,155,402,872.49
+  Std Dev: 1,241,072,452.74
+  Unique Values: 99,997
+  Coverage: 100.00%
+
+Channel Analysis:
+  CH0: Range=723, Unique=577, Mean=-154.2, Std=92.277
+  CH1: Range=361, Unique=286, Mean=-67.6, Std=44.487
+  CH2: Range=815, Unique=649, Mean=-160.1, Std=104.986
+  CH3: Range=10302, Unique=7213, Mean=4730.1, Std=1333.283
+
+============================================================
+FREQUENCY ANALYSIS
+============================================================
+Bit Frequency Analysis:
+  Total bits analyzed: 3,200,000
+  Bit 0 frequency: 0.499828 (expected: 0.5)
+  Bit 1 frequency: 0.500172 (expected: 0.5)
+  Bias: 0.000172
+
+Byte Frequency Analysis:
+  Total bytes: 400,000
+  Unique byte values: 256/256
+  Expected frequency per byte: 1562.50
+  Chi-square test for uniformity:
+    Chi-square statistic: 237.1622
+    p-value: 0.782121
+    Uniform at α=0.05: PASS
+
+============================================================
+RUNS TEST FOR INDEPENDENCE
+============================================================
+Runs Test Analysis:
+  Sequence length: 100,000
+  Zeros: 50,150, Ones: 49,850
+  Observed runs: 50,075
+  Expected runs: 50000.55
+  Z-statistic: 0.9197
+  p-value: 0.357708
+  Independent at α=0.05: PASS
+
+================================================================================
+COMPREHENSIVE RANDOMNESS ANALYSIS REPORT
+================================================================================
+
+Analysis conducted on: 2025-09-11 22:08:51
+Database: randomness_sample.db
+Table: randomness_data
+Total samples analyzed: 100,000
+
+Analysis complete!
