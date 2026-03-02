@@ -76,3 +76,6 @@ See `CLAUDE.md` for detailed development instructions and configuration options.
 ## License
 
 MIT License - see LICENSE file for details.
+
+## Changelog
+See [CHANGELOG.md](CHANGELOG.md).
